@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import NavBarMobile from './NavBarMobile';
 import NavBarDesktop from './NavBarDesktop';
 
+const BREAKPOINT = 640;
 const NavBar = (): JSX.Element => {
-    const breakpoint = 640;
-    const [ isMobile, setIsMobile ] = useState( window.innerWidth < breakpoint );
+    const [ isMobile, setIsMobile ] = useState( window.innerWidth < BREAKPOINT );
 
     useEffect(() => {
-        setIsMobile( window.innerWidth < breakpoint );
+        setIsMobile( window.innerWidth < BREAKPOINT );
     }, [ window.innerWidth ]);
 
     return (
