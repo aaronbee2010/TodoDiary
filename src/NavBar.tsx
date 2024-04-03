@@ -6,9 +6,16 @@ const BREAKPOINT = 640;
 const NavBar = (): JSX.Element => {
     const [ isMobile, setIsMobile ] = useState( window.innerWidth < BREAKPOINT );
 
-    useEffect(() => {
+    const handleResize = () => {
         setIsMobile( window.innerWidth < BREAKPOINT );
-    }, [ window.innerWidth ]);
+    }
+
+    useEffect(() => {
+        window.addEventListener("resize", handleResize);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        }
+    }, []);
 
     return (
         <>
