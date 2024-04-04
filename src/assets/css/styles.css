@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:slnt,wght@-10..0,100..900&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url("../../../node_modules/bootstrap/dist/css/bootstrap.css");
+
+.nav1-glow:hover {
+    filter: drop-shadow( white 0px 0px 6px );
+    transition: 250ms;
+}
+.nav1-glow:active {
+    filter: drop-shadow( gold 0px 0px 3px );
+}
+
+#logo {
+    font-family: 'Lobster Two';
+    font-weight: 700;
+    font-size: 28px;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#nav1-links {
+    font-family: 'Inter';
+    font-size: 16px;
+    font-weight: 400;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.nav2-links {
+    max-width: 1280px;
+    font-family: 'Inter';
+    font-size: 14px;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.nav2-links:hover {
+    filter: drop-shadow( rgba(0, 0, 0, 0.4) 0px 0px 4px );
+    transition: 250ms;
+}
+.nav2-links:active {
+    filter: drop-shadow( rgba(0, 0, 0, 0.4) 0px 0px 2px );
+}
+
+#notificationContainer {
+    background-color: #DFDFDF;
+    height: 100vh;
+}
+
+.notification {
+    background-color: #EFEFEF;
+    font-size: 12px;
+    width: auto;
+    margin-bottom: 10px;
+    padding: 4px 10px;
+    border-radius: 6px;
+}

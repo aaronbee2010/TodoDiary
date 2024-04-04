@@ -3,7 +3,8 @@ import NavBarMobile from './NavBarMobile';
 import NavBarDesktop from './NavBarDesktop';
 
 const BREAKPOINT = 640;
-const NavBar = (): JSX.Element => {
+const NavBar = ({showNotifications, setShowNotifications}: {showNotifications: boolean, setShowNotifications: any}): JSX.Element => {
+    
     const [ isMobile, setIsMobile ] = useState( window.innerWidth < BREAKPOINT );
 
     const handleResize = () => {
@@ -19,7 +20,7 @@ const NavBar = (): JSX.Element => {
 
     return (
         <>
-            {(isMobile) ? <NavBarMobile /> : <NavBarDesktop />}
+            {(isMobile) ? <NavBarMobile /> : <NavBarDesktop showNotifications={showNotifications} setShowNotifications={setShowNotifications} />}
         </>
     );
 }
