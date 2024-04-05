@@ -1,6 +1,6 @@
-import Event from '../utilities/Event';
+import EventModel from '../utilities/EventModel';
 
-const Notification = ({ event }: { event: Event }): JSX.Element => {
+const Notification = ({ event }: { event: EventModel }): JSX.Element => {
     let typePretty: string = "";
     let startOrEnd: string = "";
 
@@ -15,10 +15,6 @@ const Notification = ({ event }: { event: Event }): JSX.Element => {
             break;
     }
 
-    const currentDate = new Date();
-    const eventDate = new Date(event.date);
-    const diff = Math.floor((eventDate.getTime() - currentDate.getTime()) / (1000 * 60 * 60 * 24));
-
     return (
         <div className="notification">
             <div>
@@ -26,7 +22,7 @@ const Notification = ({ event }: { event: Event }): JSX.Element => {
             </div>
             <br />
             <div>
-                Cohort {event.cohort} - {startOrEnd} <b>{diff} days</b>
+                Cohort {event.cohort} - {startOrEnd} <b>{event.getTimeUntilDate("days", false)}</b>
             </div>
         </div>
         

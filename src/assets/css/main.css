@@ -1,6 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:slnt,wght@-10..0,100..900&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import url("../../../node_modules/bootstrap/dist/css/bootstrap.css");
 
+* {
+    font-family: 'Inter';
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 .nav1-glow:hover {
     filter: drop-shadow( white 0px 0px 6px );
     transition: 250ms;
@@ -13,27 +20,16 @@
     font-family: 'Lobster Two';
     font-weight: 700;
     font-size: 28px;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
 }
 
 #nav1-links {
-    font-family: 'Inter';
     font-size: 16px;
     font-weight: 400;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
 }
 
 .nav2-links {
     max-width: 1280px;
-    font-family: 'Inter';
     font-size: 14px;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
 }
 
 .nav2-links:hover {
@@ -46,7 +42,9 @@
 
 #notificationContainer {
     background-color: #DFDFDF;
+    padding: 8px;
     height: 100vh;
+    width: 300px;
 }
 
 .notification {

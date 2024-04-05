@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import NavBarMobile from './NavBarMobile';
 import NavBarDesktop from './NavBarDesktop';
 
-const BREAKPOINT = 640;
+const BREAKPOINT = 960;
 const NavBar = ({showNotifications, setShowNotifications}: {showNotifications: boolean, setShowNotifications: any}): JSX.Element => {
     
     const [ isMobile, setIsMobile ] = useState( window.innerWidth < BREAKPOINT );

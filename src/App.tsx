@@ -1,9 +1,8 @@
 import { useState } from "react";
 import NavBar from "./components/NavBar";
-import Notification from "./components/Notification";
-import Event from "./utilities/Event";
+import Notifications from "./components/Notifications";
 
-const upcomingEvents: Event[] = [
+const upcomingEvents = [
     {
         name: "Building Responsive Web Applications",
         type: "course",
@@ -39,28 +38,12 @@ const upcomingEvents: Event[] = [
 const App = () => {
     const [showNotifications, setShowNotifications] = useState(false);
 
-    const notifications = upcomingEvents.map(ue => {
-        return <Notification key={`${ue.name}_${ue.cohort}`} event={ue} />
-    });
-
     return (
         <div className="d-flex flex-row">
             <div className="flex-grow-1">
                 <NavBar showNotifications={showNotifications} setShowNotifications={setShowNotifications} />
             </div>
-            <div id="notificationContainer" style={{padding: "8px",}}>
-                <div style={{padding: "8px",}}>
-                    <div className="d-flex flex-row justify-content-between">
-                        <h4>Notifications</h4>
-                        <div onClick={() => {setShowNotifications(false)}}>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-x-circle-fill" viewBox="0 0 16 16">
-                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-                {notifications}
-            </div>
+            <Notifications upcomingEvents={upcomingEvents} setShowNotifications={setShowNotifications} />
         </div>
     );
 }
