@@ -14,10 +14,12 @@ const NavBarDesktop = ({showNotifications, setShowNotifications}: {showNotificat
     }, [showNotifications]);
 
     const [timetableSelected, setTimetableSelected] = useState("");
+    const [dailySchedulesSelected, setDailyScheduledSelected] = useState("");
     const setBoldLinks = () => {
         switch (window.location.pathname) {
             case "/timetable/dailyschedules":
                 setTimetableSelected("600");
+                setDailyScheduledSelected("600");
                 break;
         }
     }
@@ -31,7 +33,7 @@ const NavBarDesktop = ({showNotifications, setShowNotifications}: {showNotificat
                 <div id="nav1-main" className="d-flex flex-row justify-content-between px-4 py-2 mx-auto align-middle" style={{ maxWidth: "1280px" }}>
                     <div><Link to="/" id="logo">TodoDiary</Link></div>
                     <div id="nav1-links" className="d-flex flex-row justify-content-between mx-8">
-                        <div id="nav1-link-timetable" className="mx-3 my-auto nav1-glow" style={{ fontWeight: timetableSelected }}>Timetable</div>
+                        <div className="mx-3 my-auto"><Link to="/timetable" id="nav1-link-timetable" className="nav1-glow" style={{ fontWeight: timetableSelected }}>Timetable</Link></div>
                         <div id="nav1-link-reminders" className="mx-3 my-auto nav1-glow">Reminders</div>
                     </div>
                     <div id="notifications" className="my-auto" style={{marginLeft: "100.82px"}} onClick={() => {setShowNotifications((prevState: boolean) => !prevState)}}>
@@ -43,7 +45,7 @@ const NavBarDesktop = ({showNotifications, setShowNotifications}: {showNotificat
             </div>
             <div id="nav2" style={{ backgroundColor: "#E0E8EB" }}>
                 <div className="d-flex flex-row justify-content-center px-2 py-2 mx-auto align-middle">
-                    <div id="nav2-link-dailyschedules" className="mx-3 my-auto nav2-links">Daily Schedules</div>
+                    <div id="nav2-link-dailyschedules" className="mx-3 my-auto nav2-links" style={{ fontWeight: dailySchedulesSelected }}>Daily Schedules</div>
                     <div id="nav2-link-moduledetails" className="mx-3 my-auto nav2-links">Module Details</div>
                 </div>
             </div>

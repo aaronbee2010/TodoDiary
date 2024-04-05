@@ -6,6 +6,7 @@ import DailySchedules from './DailySchedules';
 
 const router = createBrowserRouter([
     { path: "/", element: <Navigate to="/timetable/dailyschedules" />, },
+    { path: "/timetable", element: <Navigate to="/timetable/dailyschedules" />, },
     { path: "/timetable/dailyschedules", element: <DailySchedules />, },
 ]);
 
