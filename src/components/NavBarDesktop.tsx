@@ -1,7 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-const NavBarDesktop = ({showNotifications, setShowNotifications}: {showNotifications: boolean, setShowNotifications: any}): JSX.Element => {
-
+const NavBarDesktop = ({showNotifications, setShowNotifications}: {showNotifications: boolean, setShowNotifications: any}) => {
     const toggleNotifications = () => {
         const notificationContainer = document.getElementById("notificationContainer");
     
@@ -13,14 +13,26 @@ const NavBarDesktop = ({showNotifications, setShowNotifications}: {showNotificat
         toggleNotifications();
     }, [showNotifications]);
 
+    const [timetableSelected, setTimetableSelected] = useState("");
+    const setBoldLinks = () => {
+        switch (window.location.pathname) {
+            case "/timetable/dailyschedules":
+                setTimetableSelected("600");
+                break;
+        }
+    }
+    useEffect(() => {
+        setBoldLinks();
+    }, [window.location.pathname]);
+
     return (
         <>
             <div id="nav1" style={{ backgroundColor: "#409FBF", color: "#FFFFFF" }}>
                 <div id="nav1-main" className="d-flex flex-row justify-content-between px-4 py-2 mx-auto align-middle" style={{ maxWidth: "1280px" }}>
-                    <div id="logo">TodoDiary</div>
+                    <div><Link to="/" id="logo">TodoDiary</Link></div>
                     <div id="nav1-links" className="d-flex flex-row justify-content-between mx-8">
-                        <div className="mx-3 my-auto nav1-glow">Timetable</div>
-                        <div className="mx-3 my-auto nav1-glow">Reminders</div>
+                        <div id="nav1-link-timetable" className="mx-3 my-auto nav1-glow" style={{ fontWeight: timetableSelected }}>Timetable</div>
+                        <div id="nav1-link-reminders" className="mx-3 my-auto nav1-glow">Reminders</div>
                     </div>
                     <div id="notifications" className="my-auto" style={{marginLeft: "100.82px"}} onClick={() => {setShowNotifications((prevState: boolean) => !prevState)}}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-bell nav1-glow" viewBox="0 0 16 16">
@@ -31,8 +43,8 @@ const NavBarDesktop = ({showNotifications, setShowNotifications}: {showNotificat
             </div>
             <div id="nav2" style={{ backgroundColor: "#E0E8EB" }}>
                 <div className="d-flex flex-row justify-content-center px-2 py-2 mx-auto align-middle">
-                    <div className="mx-3 my-auto nav2-links">Daily Schedules</div>
-                    <div className="mx-3 my-auto nav2-links">Module Details</div>
+                    <div id="nav2-link-dailyschedules" className="mx-3 my-auto nav2-links">Daily Schedules</div>
+                    <div id="nav2-link-moduledetails" className="mx-3 my-auto nav2-links">Module Details</div>
                 </div>
             </div>
         </>

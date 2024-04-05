@@ -1,4 +1,4 @@
-const NavBarMobile = (): JSX.Element => {
+const NavBarMobile = () => {
     return <h1>...</h1>
 }
 

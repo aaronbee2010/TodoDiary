@@ -31,7 +31,7 @@ class EventModel {
                 timeInSelectedUnit = Math.floor(timeInSelectedUnit);
                 return `${timeInSelectedUnit}${(isShortTime) ? "d" : " days"}`;
             default:
-                return "UNKNOWN TYPE";
+                throw new Error("Unknown type specified when calling EventModel.getTimeUntilDate()");
         }
     }
 };

@@ -1,6 +1,6 @@
 import EventModel from '../utilities/EventModel';
 
-const Notification = ({ event }: { event: EventModel }): JSX.Element => {
+const Notification = ({ event }: { event: EventModel }) => {
     let typePretty: string = "";
     let startOrEnd: string = "";
 

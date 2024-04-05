@@ -1,7 +1,40 @@
 import EventModel from "../utilities/EventModel";
 import Notification from "./Notification";
 
-const Notifications = ({upcomingEvents, setShowNotifications}: {upcomingEvents: any, setShowNotifications: any}) => {
+const upcomingEvents = [
+    {
+        name: "Building Responsive Web Applications",
+        type: "course",
+        cohort: "041223",
+        date: "2024-04-10 09:30:00",
+    },
+    {
+        name: "A2.2 | Practice | Building Responsive Web Applications",
+        type: "assignment",
+        cohort: "041223",
+        date: "2024-04-17 23:59:59",
+    },
+    {
+        name: "Automation and Software Quality",
+        type: "course",
+        cohort: "041223",
+        date: "2024-04-24 09:30:00",
+    },
+    {
+        name: "A3.1 | Discover | Automation and Software Quality (Online)",
+        type: "assignment",
+        cohort: "041223",
+        date: "2024-05-01 23:59:59",
+    },
+    {
+        name: "A3.2 | Discover | Automation and Software Quality (Live)",
+        type: "assignment",
+        cohort: "041223",
+        date: "2024-05-08 23:59:59",
+    },
+];
+
+const Notifications = ({setShowNotifications}: {setShowNotifications: any}) => {
     const notifications = upcomingEvents.map((upcomingEvent: { name: string; type: string; cohort: string; date: string; }): any => {
         const ue = new EventModel(upcomingEvent.name, upcomingEvent.type, upcomingEvent.cohort, upcomingEvent.date);
         return <Notification key={`${ue.name}_${ue.cohort}`} event={ue} />
