@@ -45,7 +45,7 @@ const NavBarDesktop = ({showNotifications, setShowNotifications}: {showNotificat
             </div>
             <div id="nav2" style={{ backgroundColor: "#E0E8EB" }}>
                 <div className="d-flex flex-row justify-content-center px-2 py-2 mx-auto align-middle">
-                    <div id="nav2-link-dailyschedules" className="mx-3 my-auto nav2-links" style={{ fontWeight: dailySchedulesSelected }}>Daily Schedules</div>
+                    <div className="mx-3 my-auto nav2-links" style={{ fontWeight: dailySchedulesSelected }}><Link to="/timetable/dailyschedules" id="nav2-link-dailyschedules">Daily Schedules</Link></div>
                     <div id="nav2-link-moduledetails" className="mx-3 my-auto nav2-links">Module Details</div>
                 </div>
             </div>

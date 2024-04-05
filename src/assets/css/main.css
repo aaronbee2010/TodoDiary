@@ -36,12 +36,17 @@
     font-size: 14px;
 }
 
-.nav2-links:hover {
+/* .nav2-links:hover {
     filter: drop-shadow( rgba(0, 0, 0, 0.4) 0px 0px 4px );
     transition: 250ms;
 }
 .nav2-links:active {
     filter: drop-shadow( rgba(0, 0, 0, 0.4) 0px 0px 2px );
+} */
+
+#nav2-link-dailyschedules, #nav2-link-moduledetails {
+    color: #000000;
+    text-decoration: none;
 }
 
 #notificationContainer {
