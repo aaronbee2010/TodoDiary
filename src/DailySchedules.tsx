@@ -70,7 +70,7 @@ const DailySchedules = () => {
                     <div style={{ marginBottom: "32px", }}>
                         <label><span style={{ fontWeight: "600", }}>Select date</span></label>
                         <div style={{ marginBottom: "4px", }} />
-                        <input type="date" style={{ fontSize: "14px", padding: "2px 4px", }} />
+                        <input type="date" style={{ fontSize: "12px", padding: "2px 4px", }} />
                     </div>
                     <div style={{ marginBottom: "32px", }}>
                         <table id="daily-schedules-table">
