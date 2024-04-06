@@ -13,21 +13,50 @@ const NavBarDesktop = ({showNotifications, setShowNotifications}: {showNotificat
         toggleNotifications();
     }, [showNotifications]);
 
-    const [timetableSelected, setTimetableSelected] = useState("");
+    const [timetableSelected, setTimetableSelected] = useState<any[]>([]);
     const [dailySchedulesSelected, setDailyScheduledSelected] = useState("");
     const [moduleDetailsSelected, setModuleDetailsSelected] = useState("");
+
+    const [remindersSelected, setRemindersSelected] = useState<any[]>([]);
+    const [courseDatesSelected, setCourseDatesSelected] = useState("");
+    const [assignmentDueDatesSelected, setAssignmentDueDatesSelected] = useState("");
+
     const setBoldLinks = () => {
         switch (window.location.pathname) {
             case "/timetable/dailyschedules":
-                setTimetableSelected("600");
+                setTimetableSelected([{ fontWeight: "600" }, { display: "flex" }]);
                 setDailyScheduledSelected("600");
                 setModuleDetailsSelected("");
+                setRemindersSelected([{ fontWeight: "" }, { display: "none" }]);
+                setCourseDatesSelected("");
+                setAssignmentDueDatesSelected("");
                 break;
             case "/timetable/moduledetails":
-                setTimetableSelected("600");
+                setTimetableSelected([{ fontWeight: "600" }, { display: "flex" }]);
                 setDailyScheduledSelected("");
                 setModuleDetailsSelected("600");
+                setRemindersSelected([{ fontWeight: "" }, { display: "none" }]);
+                setCourseDatesSelected("");
+                setAssignmentDueDatesSelected("");
                 break;
+            case "/reminders/coursedates":
+                setTimetableSelected([{ fontWeight: "" }, { display: "none" }]);
+                setDailyScheduledSelected("");
+                setModuleDetailsSelected("");
+                setRemindersSelected([{ fontWeight: "600" }, { display: "flex" }]);
+                setCourseDatesSelected("600");
+                setAssignmentDueDatesSelected("");
+                break;
+            case "/reminders/assignmentduedates":
+                setTimetableSelected([{ fontWeight: "" }, { display: "none" }]);
+                setDailyScheduledSelected("");
+                setModuleDetailsSelected("");
+                setRemindersSelected([{ fontWeight: "600" }, { display: "flex" }]);
+                setCourseDatesSelected("");
+                setAssignmentDueDatesSelected("600");
+                break;
+            default:
+                throw new Error("Unknown URL path encountered by NavBarDesktop.setBoldLinks()");
         }
     }
     useEffect(() => {
@@ -40,8 +69,8 @@ const NavBarDesktop = ({showNotifications, setShowNotifications}: {showNotificat
                 <div id="nav1-main" className="d-flex flex-row justify-content-between px-4 py-2 mx-auto align-middle" style={{ maxWidth: "1280px" }}>
                     <div><Link to="/" id="logo">TodoDiary</Link></div>
                     <div id="nav1-links" className="d-flex flex-row justify-content-between mx-8">
-                        <div className="mx-3 my-auto"><Link to="/timetable" id="nav1-link-timetable" className="nav1-glow" style={{ fontWeight: timetableSelected }}>Timetable</Link></div>
-                        <div id="nav1-link-reminders" className="mx-3 my-auto nav1-glow">Reminders</div>
+                        <div className="mx-3 my-auto"><Link to="/timetable" id="nav1-link-timetable" className="nav1-glow" style={timetableSelected[0]}>Timetable</Link></div>
+                        <div className="mx-3 my-auto"><Link to="/reminders" id="nav1-link-reminders" className="nav1-glow" style={remindersSelected[0]}>Reminders</Link></div>
                     </div>
                     <div id="notifications" className="my-auto" style={{marginLeft: "100.82px"}} onClick={() => {setShowNotifications((prevState: boolean) => !prevState)}}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-bell nav1-glow" viewBox="0 0 16 16">
@@ -51,9 +80,13 @@ const NavBarDesktop = ({showNotifications, setShowNotifications}: {showNotificat
                 </div>
             </div>
             <div id="nav2" style={{ backgroundColor: "#E0E8EB" }}>
-                <div className="d-flex flex-row justify-content-center px-2 py-2 mx-auto align-middle">
+                <div className="flex-row justify-content-center px-2 py-2 mx-auto align-middle" style={timetableSelected[1]}>
                     <div className="mx-3 my-auto nav2-links" style={{ fontWeight: dailySchedulesSelected }}><Link to="/timetable/dailyschedules" id="nav2-link-dailyschedules">Daily Schedules</Link></div>
                     <div className="mx-3 my-auto nav2-links" style={{ fontWeight: moduleDetailsSelected }}><Link to="/timetable/moduledetails" id="nav2-link-moduledetails">Module Details</Link></div>
+                </div>
+                <div className="flex-row justify-content-center px-2 py-2 mx-auto align-middle" style={remindersSelected[1]}>
+                    <div className="mx-3 my-auto nav2-links" style={{ fontWeight: courseDatesSelected }}><Link to="/reminders/coursedates" id="nav2-link-dailyschedules">Course Dates</Link></div>
+                    <div className="mx-3 my-auto nav2-links" style={{ fontWeight: assignmentDueDatesSelected }}><Link to="/reminders/assignmentduedates" id="nav2-link-moduledetails">Assignment Due Dates</Link></div>
                 </div>
             </div>
         </>
