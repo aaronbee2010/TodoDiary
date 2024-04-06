@@ -1,13 +1,13 @@
 class EventModel {
     readonly name: string;
     readonly type: string;
-    readonly cohort: number;
+    readonly cohort: string;
     readonly date: Date;
 
     public constructor(name: string, type: string, cohort: string, date: string) {
         this.name = name;
         this.type = type;
-        this.cohort = parseInt(cohort);
+        this.cohort = cohort;
         this.date = new Date(date);
     }
 

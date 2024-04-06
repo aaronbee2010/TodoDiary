@@ -43,10 +43,10 @@ const DailySchedules = () => {
 
         rows.push(
             <tr key={`${hour}_${minute}`}>
-                <td style={{ textAlign: "center", width: "76px" }}>
+                <td style={{ textAlign: "center", textWrap: "nowrap", }}>
                     {`${hourString}:${minuteString} ${meridiemString}`}
                 </td>
-                <td style={{ width: "500px", fontWeight: "600", backgroundColor: (schedulesKeys.includes(`_${hour}_${minuteString}`)) ? scheduleColour : "", borderBottom: (schedulesKeys.includes(`_${hour}_${minuteString}`) && !data.schedules[`_${hour}_${minuteString}`].lastInSession) ? `1px solid ${scheduleColour}` : "" }}>
+                <td style={{ width: "100%", fontWeight: "600", backgroundColor: (schedulesKeys.includes(`_${hour}_${minuteString}`)) ? scheduleColour : "", borderBottom: (schedulesKeys.includes(`_${hour}_${minuteString}`) && !data.schedules[`_${hour}_${minuteString}`].lastInSession) ? `1px solid ${scheduleColour}` : "" }}>
                     {(schedulesKeys.includes(`_${hour}_${minuteString}`) && data.schedules[`_${hour}_${minuteString}`].firstInSession) && `${data.schedules[`_${hour}_${minuteString}`].name}`}
                 </td>
             </tr>
@@ -56,8 +56,8 @@ const DailySchedules = () => {
     const materialRows = data.materials.map((material: { id: string; key: string; value: string; }) => {
         return (
             <tr key={material.id}>
-                <td style={{ width: "162px", textAlign: "center", fontWeight: "600" }}>{material.key}</td>
-                <td style={{ width: "414px" }}>{material.value}</td>
+                <th style={{ textWrap: "nowrap" }}>{material.key}</th>
+                <td style={{ width: "100%" }}>{material.value}</td>
             </tr>
         );
     });
@@ -66,14 +66,14 @@ const DailySchedules = () => {
         <div className="d-flex flex-row">
             <div className="flex-grow-1">
                 <NavBar showNotifications={showNotifications} setShowNotifications={setShowNotifications} />
-                <div id="daily-schedules-main">
+                <main>
                     <div style={{ marginBottom: "32px", }}>
                         <label><span style={{ fontWeight: "600", }}>Select date</span></label>
                         <div style={{ marginBottom: "4px", }} />
                         <input type="date" style={{ fontSize: "12px", padding: "2px 4px", }} />
                     </div>
                     <div style={{ marginBottom: "32px", }}>
-                        <table id="daily-schedules-table">
+                        <table className="daily-schedules-table">
                             <tbody>
                                 {rows}
                             </tbody>
@@ -82,13 +82,13 @@ const DailySchedules = () => {
                     <div style={{ marginBottom: "32px", }}>
                         <label><span style={{ fontWeight: "600", }}>Materials for selected day</span></label>
                         <div style={{ marginBottom: "4px", }} />
-                        <table id="daily-schedules-table">
+                        <table className="daily-schedules-table">
                             <tbody>
                                 {materialRows}
                             </tbody>
                         </table>
                     </div>
-                </div>
+                </main>
             </div>
             <Notifications setShowNotifications={setShowNotifications} />
         </div>

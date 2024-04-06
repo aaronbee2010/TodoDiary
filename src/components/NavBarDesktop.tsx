@@ -15,11 +15,18 @@ const NavBarDesktop = ({showNotifications, setShowNotifications}: {showNotificat
 
     const [timetableSelected, setTimetableSelected] = useState("");
     const [dailySchedulesSelected, setDailyScheduledSelected] = useState("");
+    const [moduleDetailsSelected, setModuleDetailsSelected] = useState("");
     const setBoldLinks = () => {
         switch (window.location.pathname) {
             case "/timetable/dailyschedules":
                 setTimetableSelected("600");
                 setDailyScheduledSelected("600");
+                setModuleDetailsSelected("");
+                break;
+            case "/timetable/moduledetails":
+                setTimetableSelected("600");
+                setDailyScheduledSelected("");
+                setModuleDetailsSelected("600");
                 break;
         }
     }
@@ -46,7 +53,7 @@ const NavBarDesktop = ({showNotifications, setShowNotifications}: {showNotificat
             <div id="nav2" style={{ backgroundColor: "#E0E8EB" }}>
                 <div className="d-flex flex-row justify-content-center px-2 py-2 mx-auto align-middle">
                     <div className="mx-3 my-auto nav2-links" style={{ fontWeight: dailySchedulesSelected }}><Link to="/timetable/dailyschedules" id="nav2-link-dailyschedules">Daily Schedules</Link></div>
-                    <div id="nav2-link-moduledetails" className="mx-3 my-auto nav2-links">Module Details</div>
+                    <div className="mx-3 my-auto nav2-links" style={{ fontWeight: moduleDetailsSelected }}><Link to="/timetable/moduledetails" id="nav2-link-moduledetails">Module Details</Link></div>
                 </div>
             </div>
         </>
