@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import App from "./components/App";
 
 const moduleList = [
@@ -24,6 +25,10 @@ const moduleList = [
 ];
 
 const ModuleDetails = () => {
+    useEffect(() => {
+        document.title = "TodoDiary - Module Details";
+    }, []);
+
     const moduleOptions: any = [];
     const dateRows: any = [];
     const materialRows: any = [];

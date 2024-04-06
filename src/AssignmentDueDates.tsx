@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import App from "./components/App";
 
 const data = [
@@ -16,6 +17,10 @@ const data = [
 ];
 
 const AssignmentDueDates = () => {
+    useEffect(() => {
+        document.title = "TodoDiary - Assignment Due Dates";
+    }, []);
+
     const dateRows = data.map(d => {
         const sdPretty = new Date(d.startDate).toLocaleDateString();
         let unitPretty = "";
