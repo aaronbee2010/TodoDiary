@@ -1,10 +1,8 @@
-import { useState } from "react";
-import NavBar from "./components/NavBar";
-import Notifications from "./components/Notifications";
+import App from "./components/App";
 
 const moduleList = [
     {
-        name: "041223 - Building Responsive Web Applications (ADXD2SD4M2)",
+        name: "ADXD2SD4M2 - Building Responsive Web Applications",
         dates : [
             { startDate: "2024-04-03", endDate: "2024-04-05", cohort: "041223", location: "QA On-Line Virtual Centre" },
             { startDate: "2024-04-10", endDate: "2024-04-12", cohort: "041224", location: "QA On-Line Virtual Centre" },
@@ -26,8 +24,6 @@ const moduleList = [
 ];
 
 const ModuleDetails = () => {
-    const [showNotifications, setShowNotifications] = useState(false);
-
     const moduleOptions: any = [];
     const dateRows: any = [];
     const materialRows: any = [];
@@ -58,47 +54,43 @@ const ModuleDetails = () => {
         });
     });
 
-    return (
-        <div className="d-flex flex-row">
-            <div className="flex-grow-1">
-                <NavBar showNotifications={showNotifications} setShowNotifications={setShowNotifications} />
-                <main>
-                    <div style={{ marginBottom: "32px", }}>
-                        <label><span style={{ fontWeight: "600", }}>Select module</span></label>
-                        <div style={{ marginBottom: "4px", }} />
-                        <select style={{ fontSize: "12px", padding: "2px 4px", }}>
-                            {moduleOptions}
-                        </select>
-                    </div>
-                    <div style={{ marginBottom: "32px", }}>
-                        <table id="module-details-table">
-                            <thead>
-                                <tr>
-                                    <th>Cohort</th>
-                                    <th>Start Date</th>
-                                    <th>End Date</th>
-                                    <th style={{ width: "100%", }}>Location</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {dateRows}
-                            </tbody>
-                        </table>
-                    </div>
-                    <div style={{ marginBottom: "32px", }}>
-                        <label><span style={{ fontWeight: "600", }}>Materials for selected module</span></label>
-                        <div style={{ marginBottom: "4px", }} />
-                        <table id="module-details-table">
-                            <tbody>
-                                {materialRows}
-                            </tbody>
-                        </table>
-                    </div>
-                </main>
+    const main = (
+        <main>
+            <div style={{ marginBottom: "32px", }}>
+                <label><span style={{ fontWeight: "600", }}>Select module</span></label>
+                <div style={{ marginBottom: "4px", }} />
+                <select style={{ fontSize: "12px", padding: "2px 4px", }}>
+                    {moduleOptions}
+                </select>
             </div>
-            <Notifications setShowNotifications={setShowNotifications} />
-        </div>
+            <div style={{ marginBottom: "32px", }}>
+                <table id="module-details-table">
+                    <thead>
+                        <tr>
+                            <th>Cohort</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th style={{ width: "100%", }}>Location</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {dateRows}
+                    </tbody>
+                </table>
+            </div>
+            <div style={{ marginBottom: "32px", }}>
+                <label><span style={{ fontWeight: "600", }}>Materials for selected module</span></label>
+                <div style={{ marginBottom: "4px", }} />
+                <table id="module-details-table">
+                    <tbody>
+                        {materialRows}
+                    </tbody>
+                </table>
+            </div>
+        </main>
     );
+
+    return <App main={main}/>;
 }
 
 export default ModuleDetails;

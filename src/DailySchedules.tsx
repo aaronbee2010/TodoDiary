@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
-import NavBar from "./components/NavBar";
-import Notifications from "./components/Notifications";
+import { useEffect } from "react";
+import App from "./components/App";
 
 const data: any = {
     schedules: {
@@ -25,8 +24,6 @@ const data: any = {
 };
 
 const DailySchedules = () => {
-    const [showNotifications, setShowNotifications] = useState(false);
-
     useEffect(() => {
         document.title = "TodoDiary - Daily Schedules";
     }, []);
@@ -62,37 +59,33 @@ const DailySchedules = () => {
         );
     });
 
-    return (
-        <div className="d-flex flex-row">
-            <div className="flex-grow-1">
-                <NavBar showNotifications={showNotifications} setShowNotifications={setShowNotifications} />
-                <main>
-                    <div style={{ marginBottom: "32px", }}>
-                        <label><span style={{ fontWeight: "600", }}>Select date</span></label>
-                        <div style={{ marginBottom: "4px", }} />
-                        <input type="date" style={{ fontSize: "12px", padding: "2px 4px", }} />
-                    </div>
-                    <div style={{ marginBottom: "32px", }}>
-                        <table className="daily-schedules-table">
-                            <tbody>
-                                {rows}
-                            </tbody>
-                        </table>
-                    </div>
-                    <div style={{ marginBottom: "32px", }}>
-                        <label><span style={{ fontWeight: "600", }}>Materials for selected day</span></label>
-                        <div style={{ marginBottom: "4px", }} />
-                        <table className="daily-schedules-table">
-                            <tbody>
-                                {materialRows}
-                            </tbody>
-                        </table>
-                    </div>
-                </main>
+    const main = (
+        <main>
+            <div style={{ marginBottom: "32px", }}>
+                <label><span style={{ fontWeight: "600", }}>Select date</span></label>
+                <div style={{ marginBottom: "4px", }} />
+                <input type="date" style={{ fontSize: "12px", padding: "2px 4px", }} />
             </div>
-            <Notifications setShowNotifications={setShowNotifications} />
-        </div>
+            <div style={{ marginBottom: "32px", }}>
+                <table className="daily-schedules-table">
+                    <tbody>
+                        {rows}
+                    </tbody>
+                </table>
+            </div>
+            <div style={{ marginBottom: "32px", }}>
+                <label><span style={{ fontWeight: "600", }}>Materials for selected day</span></label>
+                <div style={{ marginBottom: "4px", }} />
+                <table className="daily-schedules-table">
+                    <tbody>
+                        {materialRows}
+                    </tbody>
+                </table>
+            </div>
+        </main>
     );
+
+    return <App main={main}/>;
 }
 
 export default DailySchedules;

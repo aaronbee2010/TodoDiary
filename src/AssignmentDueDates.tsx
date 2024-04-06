@@ -1,6 +1,4 @@
-import { useState } from "react";
-import NavBar from "./components/NavBar";
-import Notifications from "./components/Notifications";
+import App from "./components/App";
 
 const data = [
     { course: "A2.2 | Practise | Building Responsive Web Applications (Live Session)", startDate: "2024-04-03", notifyLength: "12", notifyUnit: "h" },
@@ -18,8 +16,6 @@ const data = [
 ];
 
 const AssignmentDueDates = () => {
-    const [showNotifications, setShowNotifications] = useState(false);
-
     const dateRows = data.map(d => {
         const sdPretty = new Date(d.startDate).toLocaleDateString();
         let unitPretty = "";
@@ -40,30 +36,26 @@ const AssignmentDueDates = () => {
         );
     });
 
-    return (
-        <div className="d-flex flex-row">
-            <div className="flex-grow-1">
-                <NavBar showNotifications={showNotifications} setShowNotifications={setShowNotifications} />
-                <main>
-                    <label><span style={{ fontWeight: "600", }}>Assignment Due Date Reminders</span></label>
-                    <div style={{ marginBottom: "8px", }} />
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Assignment</th>
-                                <th>Start Date</th>
-                                <th>Notify When</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {dateRows}
-                        </tbody>
-                    </table>
-                </main>
-            </div>
-            <Notifications setShowNotifications={setShowNotifications} />
-        </div>
+    const main = (
+        <main>
+            <label><span style={{ fontWeight: "600", }}>Assignment Due Date Reminders</span></label>
+            <div style={{ marginBottom: "8px", }} />
+            <table>
+                <thead>
+                    <tr>
+                        <th>Assignment</th>
+                        <th>Start Date</th>
+                        <th>Notify When</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {dateRows}
+                </tbody>
+            </table>
+        </main>
     );
+
+    return <App main={main}/>;
 }
 
 export default AssignmentDueDates;
